@@ -12,7 +12,7 @@ Requires:       ffmpeg pygtk2-libglade mplayer
 # We must require the package that owns the directories where the icon file is
 # being installed.
 Requires:       hicolor-icon-theme
-BuildRequires:  python-devel desktop-file-utils ImageMagick
+BuildRequires:  python2-devel desktop-file-utils ImageMagick
 
 
 %description
@@ -31,11 +31,11 @@ sed -i -e '/^#!\//, 1d' Sinthgunt/app.py
 
 
 %build
-%{__python} setup.py build
+%{__python2} setup.py build
 
 
 %install
-%{__python} setup.py install -O1 --skip-build --root $RPM_BUILD_ROOT
+%{__python2} setup.py install -O1 --skip-build --root $RPM_BUILD_ROOT
 desktop-file-validate $RPM_BUILD_ROOT%{_datadir}/applications/sinthgunt.desktop
 rm -f $RPM_BUILD_ROOT%{_datadir}/sinthgunt/README.txt \
       $RPM_BUILD_ROOT%{_datadir}/sinthgunt/LICENSE.txt
@@ -61,8 +61,8 @@ cp $RPM_BUILD_ROOT%{_datadir}/sinthgunt/icon.png $RPM_BUILD_ROOT%{_datadir}/icon
 %{_datadir}/applications/sinthgunt.desktop
 %{_datadir}/icons/hicolor/48x48/apps/sinthgunt.png
 %{_datadir}/icons/hicolor/128x128/apps/sinthgunt.png
-%{python_sitelib}/Sinthgunt/
-%{python_sitelib}/sinthgunt-2.0.3-py2.7.egg-info
+%{python2_sitelib}/Sinthgunt/
+%{python2_sitelib}/sinthgunt-2.0.3-py2.7.egg-info
 
 
 %post
